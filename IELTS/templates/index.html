@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Practice Tool</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header-logo-container">
+            <img src="{{ url_for('static', filename='favicon.png') }}" alt="IELTS Logo" class="page-logo">
+        </div>
+        <h1>IELTS Practice Tool</h1>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button id="practiceTab" class="tab-btn active">Practice Tasks</button>
+            <button id="vocabularyTab" class="tab-btn">Vocabulary</button>
+            <button id="customizationTab" class="tab-btn">Customization</button>
+        </div>
+
+        <!-- Practice Tab Content -->
+        <div id="practiceContent" class="tab-content active">
+            <div class="task-instructions">
+                <p><strong>Welcome to your IELTS Practice Tool!</strong></p>
+                <p><strong>Speaking Test</strong>: 3 parts (11-14 minutes)</p>
+                <p><strong>Writing Task 1</strong>: Describe visual information (20 minutes, 150 words)</p>
+                <p><strong>Writing Task 2</strong>: Essay on a given topic (40 minutes, 250 words)</p>
+                <p style="margin-top: 20px; color: #666;"><em>All your data is stored locally on your machine. Your OpenAI API key is never shared.</em></p>
+            </div>
+
+            <!-- Task Selection -->
+            <div class="task-menu">
+                <div class="task-card">
+                    <h2>Speaking Test</h2>
+                    <div class="task-description">
+                        Practice all three parts of the IELTS Speaking test:
+                        <br><strong>Part 1:</strong> Introduction & Interview (4-5 min)
+                        <br><strong>Part 2:</strong> Long Turn / Cue Card (3-4 min)
+                        <br><strong>Part 3:</strong> Discussion (4-5 min)
+                    </div>
+                    <button onclick="window.location.href='/speaking'" class="btn btn-primary btn-large">Practice Speaking</button>
+                </div>
+
+                <div class="task-card">
+                    <h2>Writing Task 1</h2>
+                    <div class="task-description">
+                        <strong>Academic Writing Task 1:</strong> Describe, summarize or explain visual information such as graphs, charts, tables, diagrams or processes.
+                        <br><strong>Time:</strong> 20 minutes | <strong>Words:</strong> At least 150
+                    </div>
+                    <button onclick="window.location.href='/writing-task1'" class="btn btn-primary btn-large">Practice Writing Task 1</button>
+                </div>
+
+                <div class="task-card">
+                    <h2>Writing Task 2</h2>
+                    <div class="task-description">
+                        <strong>Essay Writing:</strong> Present and justify an opinion, compare and contrast evidence, or evaluate and challenge ideas.
+                        <br><strong>Time:</strong> 40 minutes | <strong>Words:</strong> At least 250
+                    </div>
+                    <button onclick="window.location.href='/writing-task2'" class="btn btn-primary btn-large">Practice Writing Task 2</button>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div style="margin: 30px auto; width: 80%; max-width: 400px; height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent);"></div>
+
+            <!-- GitHub Link -->
+            <div class="github-link" style="margin-top: 20px;">
+                <p>Open source project - <a href="https://github.com/anthropics/claude-code" target="_blank">View on GitHub</a></p>
+            </div>
+        </div>
+
+        <!-- Vocabulary Tab Content -->
+        <div id="vocabularyContent" class="tab-content">
+            <div class="task-instructions">
+                <p><strong>Vocabulary Flashcards</strong></p>
+                <p>Save important vocabulary and feedback from your AI evaluations. Review them anytime to improve your lexical resource!</p>
+            </div>
+
+            <div class="button-container" style="margin-top: 30px;">
+                <button onclick="window.location.href='/vocabulary'" class="btn btn-primary btn-large">Open Vocabulary Flashcards</button>
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background: #fafafa; border: 1px solid #e0e0e0;">
+                <h3 style="margin-top: 0;">How to use Vocabulary Flashcards</h3>
+                <ol style="margin-left: 20px; line-height: 1.8; color: #555;">
+                    <li>Practice a Speaking or Writing task</li>
+                    <li>Get AI evaluation with vocabulary suggestions</li>
+                    <li>Click "Add to Vocabulary" to save the feedback</li>
+                    <li>Review your flashcards regularly to memorize new words and expressions</li>
+                    <li>Edit or delete cards as needed</li>
+                </ol>
+                <p style="margin-top: 20px; color: #666;"><em>Tip: Focus on Band 8-9 vocabulary to maximize your IELTS score!</em></p>
+            </div>
+        </div>
+
+        <!-- Customization Tab Content -->
+        <div id="customizationContent" class="tab-content">
+            <div class="config-section">
+                <div class="config-item">
+                    <label for="apiKey">OpenAI API Key (required for AI evaluation):</label>
+                    <div class="api-key-input-group">
+                        <input type="password" id="apiKey" placeholder="sk-..." value="{{ api_key }}">
+                        <button id="saveApiKeyBtn" class="btn btn-success btn-compact">Save</button>
+                    </div>
+                    <span class="config-hint">Your API key is stored locally and never shared. Get your key at <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a></span>
+                </div>
+
+                <h3 style="margin-top: 30px; text-align: center;">Manage Prompts</h3>
+                <p style="text-align: center; color: #666;">Add and manage practice prompts for each task. Click on a task below to customize:</p>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+                    <button onclick="window.location.href='/speaking'" class="btn btn-secondary">Speaking Prompts</button>
+                    <button onclick="window.location.href='/writing-task1'" class="btn btn-secondary">Writing Task 1 Prompts</button>
+                    <button onclick="window.location.href='/writing-task2'" class="btn btn-secondary">Writing Task 2 Prompts</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        const practiceTab = document.getElementById('practiceTab');
+        const vocabularyTab = document.getElementById('vocabularyTab');
+        const customizationTab = document.getElementById('customizationTab');
+        const practiceContent = document.getElementById('practiceContent');
+        const vocabularyContent = document.getElementById('vocabularyContent');
+        const customizationContent = document.getElementById('customizationContent');
+
+        practiceTab.addEventListener('click', () => {
+            practiceTab.classList.add('active');
+            vocabularyTab.classList.remove('active');
+            customizationTab.classList.remove('active');
+            practiceContent.classList.add('active');
+            vocabularyContent.classList.remove('active');
+            customizationContent.classList.remove('active');
+        });
+
+        vocabularyTab.addEventListener('click', () => {
+            vocabularyTab.classList.add('active');
+            practiceTab.classList.remove('active');
+            customizationTab.classList.remove('active');
+            vocabularyContent.classList.add('active');
+            practiceContent.classList.remove('active');
+            customizationContent.classList.remove('active');
+        });
+
+        customizationTab.addEventListener('click', () => {
+            customizationTab.classList.add('active');
+            practiceTab.classList.remove('active');
+            vocabularyTab.classList.remove('active');
+            customizationContent.classList.add('active');
+            practiceContent.classList.remove('active');
+            vocabularyContent.classList.remove('active');
+        });
+
+        // Save API key
+        document.getElementById('saveApiKeyBtn').addEventListener('click', async () => {
+            const apiKey = document.getElementById('apiKey').value;
+
+            try {
+                const response = await fetch('/save_config', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ api_key: apiKey })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('API key saved successfully!');
+                } else {
+                    alert('Error saving API key: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error saving API key: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

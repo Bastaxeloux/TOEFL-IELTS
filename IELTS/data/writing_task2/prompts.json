@@ -1,0 +1,19 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "question": "Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true function of a university should be to give access to knowledge for its own sake, regardless of whether the course is useful to an employer. What, in your opinion, should be the main function of a university?",
+      "essay_type": "opinion"
+    },
+    {
+      "id": 2,
+      "question": "In many countries, the amount of crime is increasing. What do you think are the main causes of crime? How can we deal with those causes?",
+      "essay_type": "problem"
+    },
+    {
+      "id": 3,
+      "question": "Some people believe that it is best to accept a bad situation, such as an unsatisfactory job or shortage of money. Others argue that it is better to try and improve such situations. Discuss both these views and give your own opinion.",
+      "essay_type": "discussion"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.py[cod]
+data/config.json
+data/vocabulary_cards.json
+*.swp
+.DS_Store

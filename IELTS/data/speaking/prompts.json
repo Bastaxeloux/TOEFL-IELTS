@@ -1,0 +1,32 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "part": 1,
+      "question": "Do you work or are you a student?\nWhat do you like most about your job/studies?\nDo you think you will continue doing this in the future?\nWhat are your plans for the next few years?",
+      "topic": "",
+      "audio_file": null
+    },
+    {
+      "id": 2,
+      "part": 1,
+      "question": "Let's talk about your hometown.\nWhere are you from?\nWhat do you like most about your hometown?\nHas your hometown changed much in recent years?\nWould you like to live there in the future?",
+      "topic": "",
+      "audio_file": null
+    },
+    {
+      "id": 3,
+      "part": 2,
+      "question": "Describe a memorable event in your life. You should say: what the event was, when it happened, why it was memorable, and explain how you felt about it.",
+      "topic": "Memorable Event",
+      "audio_file": null
+    },
+    {
+      "id": 4,
+      "part": 3,
+      "question": "How do you think social media has changed the way people communicate?",
+      "topic": "",
+      "audio_file": null
+    }
+  ]
+}

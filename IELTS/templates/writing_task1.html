@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Writing Task 1</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        #timerValue {
+            font-size: 36px !important;
+        }
+        .timer {
+            min-width: 150px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-logo-container">
+            <img src="{{ url_for('static', filename='favicon.png') }}" alt="IELTS Logo" class="page-logo">
+        </div>
+        <h1>IELTS Writing Task 1</h1>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button id="practiceTab" class="tab-btn active">Practice</button>
+            <button id="promptsTab" class="tab-btn">Manage Prompts</button>
+        </div>
+
+        <!-- Practice Tab -->
+        <div id="practiceContent" class="tab-content active">
+            <div class="task-instructions">
+                <p><strong>Writing Task 1 :</strong> Describe, summarize or explain visual information.</p>
+                <p><strong>Time:</strong> 20 minutes | <strong>Minimum words:</strong> 150</p>
+            </div>
+
+            <div class="config-section">
+                <div class="config-item">
+                    <label for="apiKey">OpenAI API Key:</label>
+                    <div class="api-key-input-group">
+                        <input type="password" id="apiKey" placeholder="sk-..." value="{{ api_key }}">
+                        <button id="saveApiKeyBtn" class="btn btn-success btn-compact">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button id="startPractice" class="btn btn-primary btn-highlight">Start Practice</button>
+                <button onclick="window.location.href='/'" class="btn btn-secondary">Back to Home</button>
+            </div>
+
+            <!-- Practice Area (hidden initially) -->
+            <div id="practiceArea" style="display: none;">
+                <!-- Diagram Display -->
+                <div class="current-prompt">
+                    <h3>Task Description:</h3>
+                    <div id="taskDescription" style="font-size: 16px; line-height: 1.6; padding: 15px; background: white; border: 1px solid #ddd;"></div>
+                </div>
+
+                <div id="diagramContainer" style="text-align: center; margin: 20px 0;">
+                    <img id="diagramImage" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
+                </div>
+
+                <!-- Timer -->
+                <div class="timer-container">
+                    <div class="timer">
+                        <span id="timerValue">20:00</span>
+                    </div>
+                    <div class="timer-label">Remaining Time</div>
+                </div>
+
+                <!-- Writing Area -->
+                <div style="margin: 20px 0;">
+                    <label for="writingArea"><strong>Your Response:</strong></label>
+                    <textarea id="writingArea" rows="15" style="width: 100%; padding: 15px; border: 2px solid #333; font-size: 15px; line-height: 1.6;" placeholder="Write your description here..."></textarea>
+                    <p><strong>Word count:</strong> <span id="wordCount">0</span> / 150</p>
+                </div>
+
+                <!-- AI Feedback -->
+                <div id="feedbackContainer" style="display: none;" class="ai-feedback">
+                    <h3>AI Feedback</h3>
+                    <div id="feedbackContent" class="feedback-card"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="button-container">
+                    <button id="startTimer" class="btn btn-warning">Start Timer</button>
+                    <button id="getEvaluation" class="btn btn-success">Get AI Evaluation</button>
+                    <button id="addToVocab" class="btn btn-secondary" style="display: none;">Add to Vocabulary</button>
+                    <button id="newTask" class="btn btn-primary">New Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prompts Management Tab -->
+        <div id="promptsContent" class="tab-content">
+            <div class="config-section">
+                <h3>Add New Writing Task 1 Prompt</h3>
+                <div class="config-item">
+                    <label for="newPromptQuestion">Task Question:</label>
+                    <textarea id="newPromptQuestion" rows="3" style="width: 100%; padding: 10px; border: 2px solid #333;" placeholder="Summarize the information by selecting and reporting the main features..."></textarea>
+                </div>
+                <div class="config-item">
+                    <label for="newPromptDescription">Diagram Description (for AI evaluation):</label>
+                    <textarea id="newPromptDescription" rows="4" style="width: 100%; padding: 10px; border: 2px solid #333;" placeholder="Describe what the diagram shows (this helps the AI evaluate your response)..."></textarea>
+                </div>
+                <div class="config-item">
+                    <label for="diagramUpload">Upload Diagram Image:</label>
+                    <input type="file" id="diagramUpload" accept="image/*" style="display: block; margin-top: 10px;">
+                </div>
+                <div class="button-container">
+                    <button id="addPrompt" class="btn btn-success">Add Prompt</button>
+                </div>
+            </div>
+
+            <div class="config-section" style="margin-top: 30px;">
+                <h3>Existing Prompts</h3>
+                <div id="promptsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='writing_task1.js') }}"></script>
+</body>
+</html>

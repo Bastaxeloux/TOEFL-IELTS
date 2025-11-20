@@ -1,0 +1,10 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "question": "The chart shows the average daily minimum and maximum levels of air pollutants in four cities. Summarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "diagram_description": "A bar chart showing air pollution levels (minimum and maximum) across four cities: City A, City B, City C, and City D.",
+      "diagram_file": null
+    }
+  ]
+}

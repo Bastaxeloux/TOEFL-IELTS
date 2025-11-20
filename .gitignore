@@ -4,17 +4,10 @@ __pycache__/
 *$py.class
 *.so
 .Python
-venv/
 env/
+venv/
 ENV/
-.venv
-
-# Flask
-instance/
-.webassets-cache
-
-# Whisper model cache
-~/.cache/whisper/
+*.egg-info/
 
 # IDE
 .vscode/
@@ -26,32 +19,6 @@ instance/
 # OS
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Temporary files
-*.tmp
-*.temp
-temp_recording.*
-*.webm
-*.mp3
 
 # Logs
 *.log
-
-# Environment variables
-.env
-.env.local
-
-# User data files - Allow prompts and audio to be shared
-data/config.json
-data/vocabulary_cards.json
-data/uploads/
-
-# Legacy files (for migration)
-prompts.txt
-vocabulary_cards.json
-config.json
-task2_content.json
-task3_content.json
-task4_content.json
-uploads/
