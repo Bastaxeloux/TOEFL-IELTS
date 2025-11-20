@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="static/favicon.png" alt="TOEFL Practice Tool Logo" width="120" height="120">
+  <img src="TOEFL/static/favicon.png" alt="TOEFL Practice Tool Logo" width="120" height="120">
 
   # TOEFL & IELTS Practice Tools
 
