@@ -11,6 +11,8 @@ ENV/
 # Local data files (sensitive - DO NOT COMMIT)
 data/config.json
 data/vocabulary_cards.json
+config.json
+vocabulary_cards.json
 
 # IDE
 .vscode/
